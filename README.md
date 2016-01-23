@@ -5,7 +5,7 @@ Inspired by kzeng10 and stegastore.
 
 ## Installation
 
-Note: This gem uses phantomjs. For mac: `brew install phantomjs`.
+Note: This gem uses phantomjs. `brew install phantomjs` or `npm install phantomjs`. 
 
 Add this line to your application's Gemfile:
 
@@ -29,10 +29,10 @@ Configure the gem:
 
 ```ruby
 AutoFlick.config({
-  username: "my username here"
-  password: "my password here"
-  api_key: "my api key here",
-  shared_secret: "my api secret here"
+  username: "my_username_here",
+  password: "my_password_here",
+  api_key: "my_api_key_here",
+  shared_secret: "my_api_secret_here"
 })
 ```
 

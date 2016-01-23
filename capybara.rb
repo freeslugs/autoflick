@@ -22,28 +22,23 @@ end
 
 def get_key(auth_url, username, password)
   begin
+    
     visit auth_url
 
     fill_in('username', :with => username)
     fill_in('passwd', :with => password)
     click_button "login-signin"
-
-    visit auth_url
-
-    fill_in('username', :with => username)
-    fill_in('passwd', :with => password)
-    click_button "login-signin"
-
+    
     click_button "OK, I'LL AUTHORIZE IT"  
-    
-    key = find("#Main span").text
-    
-  rescue Exception => e
-    puts e.message
-  end
 
-  page.driver.quit
-  File.delete("cookies.text")
+    key = find("#Main span").text
+
+  rescue Capybara::ElementNotFound => e
+    retry
+  ensure
+    page.driver.quit
+    File.delete("cookies.text")  
+  end
 
   return key
 end

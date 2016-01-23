@@ -24,7 +24,7 @@ module AutoFlick
     token = flickr.get_request_token
     auth_url = flickr.get_authorize_url(token['oauth_token'], :perms => 'write')
     verify = Api.get_key(auth_url, @username, @password)
-
+    
     begin
       flickr.get_access_token(token['oauth_token'], token['oauth_token_secret'], verify)
       login = flickr.test.login
